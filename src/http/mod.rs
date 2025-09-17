@@ -25,7 +25,7 @@ pub async fn serve(config:Config, db:PgPool) -> anyhow::Result<()> {
     )
     // .layer(Extension(AppContext{}))
     .layer(TraceLayer::new_for_http());
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:8000").await?;
+    let listener = tokio::net::TcpListener::bind(&format!("127.0.0.1:{}",config.port)).await?;
     axum::serve(listener, app).await.unwrap();
 
     Ok(())

@@ -6,6 +6,8 @@ pub struct Config{
     pub database_uri:String,
 
     #[arg(long, env="HMAC_KEY")]
-    pub hmac_key: String
+    pub hmac_key: String,
 
+    #[arg(long, env="PORT")]
+    pub port:u16
 }

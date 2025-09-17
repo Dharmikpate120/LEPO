@@ -9,5 +9,7 @@ pub struct Config{
     pub hmac_key: String,
 
     #[arg(long, env="PORT")]
-    pub port:u16
+    pub port:u16,
+    #[arg(long, env="HOST")]
+    pub host:String
 }

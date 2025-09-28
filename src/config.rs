@@ -11,5 +11,11 @@ pub struct Config{
     #[arg(long, env="PORT")]
     pub port:u16,
     #[arg(long, env="HOST")]
-    pub host:String
+    pub host:String,
+
+    #[arg(long, env="GEMINI_API_KEY")]
+    pub gemini_api_key : String,
+
+    #[arg(long, env="GEMINI_MODEL")]
+    pub gemini_model : String,
 }

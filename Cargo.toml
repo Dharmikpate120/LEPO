@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-axum = {version = "0.8.4", features=["multipart"]}
+axum = {version = "0.8.4", features=["multipart", "macros"]}
 tokio = { version = "1.47.1", features = ["full"] }
 axum-macros = "0.5.0"
 serde = {version="1.0.219", features = ["derive"]}
@@ -25,6 +25,9 @@ async-trait = "0.1.89"
 headers = "0.4.1"
 axum-extra = { version = "0.10.1", features = ["typed-header"] }
 thiserror = "2.0.16"
+reqwest = { version = "0.12.23",default-features = false, features = ["blocking","rustls-tls-webpki-roots"] }
+json = "0.12.4"
+langchain-rust = { version = "4.6.0", features = ["postgres"] }
 
 [lib]
 path="src/lib.rs"

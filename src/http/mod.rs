@@ -1,23 +1,25 @@
 // use std::error::Error;
 
-use axum::{middleware::AddExtension, Extension, Router};
-use sqlx::{PgPool, Pool};
+use axum::{Extension, Router};
+use sqlx::{PgPool};
 use tower::ServiceBuilder;
 
-use crate::config::Config;
+use crate::{config::Config, http::routes::auth};
 use tower_http::trace::TraceLayer;
 
-mod users;
+mod routes;
 mod extractor;
 mod error;
 mod types;
 mod gemini;
+mod postgres;
+use crate::http::routes::users;
 
 pub use error::Error;
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct AppContext{
  config: Config,
  db:PgPool
@@ -42,4 +44,5 @@ pub async fn serve(config:Config, db:PgPool) -> anyhow::Result<()> {
 
 fn api_router() -> Router{
     users::router()
+        .merge(auth::router())
 }

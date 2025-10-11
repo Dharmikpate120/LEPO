@@ -32,7 +32,12 @@ pub struct CommitDiff{
 }
 
 pub fn router() ->Router{
-    Router::new().route("/get-skills", post(get_handler))
+    Router::new().route("/get-skills", post(get_handler)).route("/",get(home_handler))
+}
+
+#[axum::debug_handler] 
+async fn home_handler()->String{
+    "hello welcome to lepo".to_string()
 }
 
 #[axum::debug_handler]

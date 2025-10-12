@@ -1,0 +1,16 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE commit_summary SET summary =$1 WHERE repo_name = $2 AND commit_summary.username=$3;",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "e9a5d02bbe6d850a8af9d84fa29675fb0a093076cdbb773fa95523a14a780ac5"
+}

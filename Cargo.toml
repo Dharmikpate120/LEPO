@@ -1,70 +1,35 @@
 [package]
 name = "lepo"
+version = "0.1.0"
 edition = "2024"
-version = "0.0.1"
 
 [dependencies]
-anyhow = "1.0.99"
-async-trait = "0.1.89"
+axum = {version = "0.8.4", features=["multipart", "macros"]}
+tokio = { version = "1.47.1", features = ["full"] }
 axum-macros = "0.5.0"
-cargo-watch = "8.5.3"
-clap_builder = "4.5.47"
-dotenvy = "0.15.7"
+serde = {version="1.0.219", features = ["derive"]}
 gemini_client_rs = "0.6.0"
-headers = "0.4.1"
-json = "0.12.4"
+dotenvy = "0.15.7"
 serde_json = "1.0.143"
-thiserror = "2.0.16"
+cargo-watch = "8.5.3"
+sqlx = {version = "0.8.6", features=["runtime-tokio", "postgres", "time"]}
+clap = {version = "4.5.47", features = ["derive", "env"]}
+clap_builder = "4.5.47"
+anyhow = "1.0.99"
 tower = "0.5.2"
+tower-http = { version = "0.6.6", features = ["trace"] }
 tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.20", features = ["fmt"] }
 uuid = "1.18.1"
-
-[dependencies.axum]
-version = "0.8.4"
-features = ["multipart", "macros"]
-
-[dependencies.axum-extra]
-version = "0.10.1"
-features = ["typed-header"]
-
-[dependencies.clap]
-version = "4.5.47"
-features = ["derive", "env"]
-
-[dependencies.langchain-rust]
-version = "4.6.0"
-features = ["postgres"]
-
-[dependencies.reqwest]
-version = "0.12.23"
-features = ["blocking", "rustls-tls-webpki-roots"]
-default-features = false
-
-[dependencies.serde]
-version = "1.0.219"
-features = ["derive"]
-
-[dependencies.sqlx]
-version = "0.8.6"
-features = ["runtime-tokio", "postgres"]
-
-[dependencies.tokio]
-version = "1.47.1"
-features = ["full"]
-
-[dependencies.tower-http]
-version = "0.6.6"
-features = ["trace"]
-
-[dependencies.tracing-subscriber]
-version = "0.3.20"
-features = ["fmt"]
+async-trait = "0.1.89"
+headers = "0.4.1"
+axum-extra = { version = "0.10.1", features = ["typed-header"] }
+thiserror = "2.0.16"
+reqwest = { version = "0.12.23",default-features = false, features = ["blocking","rustls-tls-webpki-roots"] }
+json = "0.12.4"
+langchain-rust = { version = "4.6.0", features = ["postgres"] }
+chrono = "0.4.42"
+time = "0.3.44"
 
 [lib]
-path = "src/lib.rs"
-name = "lepo"
-plugin = false
-proc-macro = false
-edition = "2024"
-required-features = []
-crate-type = ["lib"]
+path="src/lib.rs"

@@ -2,7 +2,7 @@
 #[derive(clap::Parser,Debug, Clone)]
 pub struct Config{
 
-    #[arg(long, env="POSTGRES_URL")]
+    #[arg(long, env="DATABASE_URL")]
     pub database_uri:String,
 
     #[arg(long, env="HMAC_KEY")]

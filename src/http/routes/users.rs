@@ -1,7 +1,7 @@
 
 use axum::{Extension, Json, Router};
-use axum::routing::{post};
-use reqwest::Client;
+use axum::routing::{post, get};
+use reqwest::{Client};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use crate::http::gemini::functions::skills_extractor;
@@ -45,7 +45,14 @@ pub struct StoredSummary{
 }
 
 pub fn router() ->Router{
-    Router::new().route("/git/calculate-skills", post(get_handler))
+    Router::new()
+    .route("/git/calculate-skills", post(get_handler))
+    .route("/",get(home_handler))
+}
+
+#[axum::debug_handler]
+async fn home_handler() -> String{
+    "hello from dharmik in lepo".to_string()
 }
 
 #[axum::debug_handler]

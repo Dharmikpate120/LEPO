@@ -17,7 +17,8 @@ COPY --from=cacher /app/target target
 COPY . .
 RUN cargo build --release
 
-CMD ["cargo","run"]
+ENTRYPOINT ["/app/target/release/lepo"]
+# CMD ["cargo","run"]
 # RUN --mount=type=cache,target=/root/cargo/cache \
 #     --mount=type=cache,target=/lepo/target \
 #     mkdir -p src && echo "fn main() {}" > src/main.rs \

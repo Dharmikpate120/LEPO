@@ -11,6 +11,7 @@ pipeline{
                 sh 'docker build . -t lepo-backend:latest'
             }
         }
+        
         stage("test"){
             steps{
                 echo "testing"

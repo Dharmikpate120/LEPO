@@ -19,7 +19,7 @@ pipeline{
         }
         stage("deploy"){
             steps{
-                sh 'docker run -p 8000:8000 lepo-backend:latest'
+                sh 'docker run -d --name lepo-backend --rm -p 8000:8000 lepo-backend:latest'
             }
         }
     }
